@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Proposal 💖</title>
+    <link rel="stylesheet" href="vday.css"> <!-- External CSS -->
+</head>
+<body>
+
+    <!-- New GIF added above the question -->
+    <img src="catflower.gif" alt="Cute Love GIF" class="top-gif">
+
+    <h1>Will you go out with me this Valentine's Day? 💖</h1>
+
+    <div class="buttons">
+        <button id="yes" onclick="sayYes()">Yes</button>
+        <button id="no" onclick="moveNo()">No</button>
+    </div>
+
+    <!-- Custom Popup Modal -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <img src="ethel.gif" alt="Happy GIF">
+            <p>Yay! I Love You! 💖🥰</p>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function sayYes() {
+            document.getElementById("popup").style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        function moveNo() {
+            let button = document.getElementById("no");
+            let maxWidth = window.innerWidth - button.offsetWidth;
+            let maxHeight = window.innerHeight - button.offsetHeight;
+
+            let x = Math.random() * maxWidth;
+            let y = Math.random() * maxHeight;
+
+            button.style.position = "absolute";
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.classList.add("heart");
+            document.body.appendChild(heart);
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+
+</body>
+</html>
